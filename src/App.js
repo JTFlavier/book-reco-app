@@ -3,6 +3,9 @@ import './App.css';
 
 //TUTORIAL: https://www.digitalocean.com/community/tutorials/how-to-build-forms-in-react
 
+
+const output_text = "You might like to read the following:\n\nThe making of Pride and Prejudice\nSusie Conklin\n\nMy Sister's Keeper\nJodi Picoult\n\nThe Diamond Age\nNeal Stephenson\n\nThe new rulers of the world\nJohn Pilger\n\nRoberto Rossellini: Magician of the Real\nDavid Forgacs \n\n\nSource: https://www.readgeek.com"
+
 const formReducer = (state, event) => {
   if(event.reset) {
     return {
@@ -33,7 +36,7 @@ function App() {
       setFormData({
         reset: true
       })
-    }, 3000)
+    }, 10000)
   }
 
   const handleChange = event => {
@@ -45,15 +48,17 @@ function App() {
 
   return(
     <div className="wrapper">
-      <h1>How About Them Apples</h1>
+      <h1>Book Recommender System</h1>
       {submitting &&
-        <div>
-          You are submitting the following:
+        <div className='display-linebreak'>
+          {output_text}
+
+          {/* You are submitting the following:
           <ul>
             {Object.entries(formData).map(([name, value]) => (
               <li key={name}><strong>{name}</strong>: {value.toString()}</li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       }
       <form onSubmit={handleSubmit}>
